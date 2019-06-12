@@ -25,13 +25,13 @@ note: We are going to use React at this talk, because I want to focus on the con
 - What is a component
 - Using input/output to decouple components
 - Accepting only the right amount of data to render the component
-- Spliting UI from business logic
+- Splitting UI from business logic
   - Contributing to the component library
 - Lifting state
 
 ---
 
-> "Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. This page provides an introduction to the idea of components."
+> "Components let you split the UI into independent, reusable pieces, and think about each piece in isolation."
 
 Taken from [React documentation](https://reactjs.org/docs/components-and-props.html)
 
@@ -44,6 +44,10 @@ Taken from [Angular documentation](https://angular.io/guide/architecture-compone
 ---
 
 ## Using input/output to decouple components
+
+---
+
+<iframe src="http://localhost:3000/addUser" width="100%" height="500px">
 
 ---
 
@@ -190,7 +194,7 @@ note: Remember those are general rules, there might be exceptions!
 
 ---
 
-## Spliting UI from business logic
+## Splitting UI from business logic
 
 ---
 
@@ -232,7 +236,8 @@ Example: Instagram followers/following list
 function FollowersList() {
   const [followers, setFollowers] = useState([]);
   useEffect(async () => {
-    const followers = await fetch("api.instagram.com/followers");
+    const followers = 
+      await fetch("api.instagram.com/followers");
 
     setFollowers(followers);
   }, []);
@@ -253,7 +258,8 @@ function FollowersList() {
 function FollowingList() {
   const [following, setFollowing] = useState([]);
   useEffect(async () => {
-    const following = await fetch("api.instagram.com/following");
+    const following = 
+      await fetch("api.instagram.com/following");
 
     setFollowing(following);
   }, []);
@@ -292,7 +298,8 @@ function UserList({ users }) {
 function FollowersList() {
   const [followers, setFollowers] = useState([]);
   useEffect(async () => {
-    const followers = await fetch("api.instagram.com/followers");
+    const followers = 
+      await fetch("api.instagram.com/followers");
 
     setFollowers(followers);
   }, []);
@@ -307,7 +314,8 @@ function FollowersList() {
 function FollowingList() {
   const [following, setFollowing] = useState([]);
   useEffect(async () => {
-    const following = await fetch("api.instagram.com/following");
+    const following = 
+      await fetch("api.instagram.com/following");
 
     setFollowing(following);
   }, []);
