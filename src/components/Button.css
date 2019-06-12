@@ -1,0 +1,20 @@
+.button {
+  padding: 12px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.button.button--primary {
+  background-color: blue;
+  color: white;
+}
+
+.button.button--secondary {
+  background-color: red;
+  color: white;
+}
+
+.button.button--tertiary {
+  background-color: white;
+  color: black;
+}
