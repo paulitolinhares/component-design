@@ -14,7 +14,7 @@ If you have any questions, please ask (at any given moment!)
 
 ## WTF (What the framework)?
 
-![React logo](assets/logo.svg)
+![React logo](assets/logo.svg)<!-- .element width="600px" -->
 
 note: We are going to use React at this talk, because I want to focus on the concepts, not on the technology. This might totally backfire, but let's see!!
 
@@ -328,6 +328,8 @@ function FollowingList() {
 
 ## Advantages
 
+<small>
+
 - `<UserList>` is easily testable with mock data because it does not have any business logic
 
 - We can change the look & feel of the followers and following lists by only changing 1 file
@@ -335,6 +337,8 @@ function FollowingList() {
 - We can change how the list is rendered in one of the 2 pages by replacing `<UserList>` with another component with the same _interface_
 
 - Each of the 3 components has their own clear responsibility (yay, no docs!)
+
+</small>
 
 ---
 
