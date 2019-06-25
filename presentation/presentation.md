@@ -1,22 +1,6 @@
 ## Making your (dumb) components smarter
 
-Paulo Linhares - Frontend Developer @ Carepay
-
----
-
-# Disclaimers
-
----
-
-If you have any questions, please ask (at any given moment!)
-
----
-
-## WTF (What the framework)?
-
-![React logo](assets/logo.svg)<!-- .element width="600px" -->
-
-note: We are going to use React at this talk, because I want to focus on the concepts, not on the technology. This might totally backfire, but let's see!!
+Paulo Linhares - Frontend Developer @ Frontmen
 
 ---
 
@@ -104,8 +88,26 @@ export default function UserForm({ onSubmit }) {
 ```
 
 ```jsx
-<UserForm onSubmit={saveUser} />)
+<UserForm onSubmit={saveUser} />
 ```
+
+---
+
+Bonus: we now have a component that is easier to test
+
+---
+
+```jsx
+it('executes onSubmit callback', () => {
+  const cb = jest.fn();
+  const component = shallow(<UserForm onSubmit={cb} />);
+  const form = component.find('form');
+  form.simulate('submit');
+  expect(cb).toBeCalled();
+})
+```
+
+note: Since we are not _injecting_ the function to be executed on submit, it's easier to put a mock and assert it.
 
 ---
 
@@ -119,6 +121,18 @@ Think about your interfaces
 
 ---
 
+## Wall plugs
+
+![Wall plugs](assets/socket.png)
+
+---
+
+## Mouse and keyboard
+
+![Mouse and keyboard](assets/mouse-keyboard.webp) <!-- .element width="500px" -->
+
+---
+
 Interface: The way something interacts with the outside world. Also a way to abstract complexity
 
 ---
@@ -128,18 +142,15 @@ Interface: The way something interacts with the outside world. Also a way to abs
 ---
 
 ```jsx
-export default function VideoPage({ match }) {
-  const { videoId } = match.params;
+export default function VideoPage({ match: route }) {
+  const { videoId } = route.params;
   return (
-    <>
+    <React.Fragment>
       <h1>YoutubeVideo</h1>
-      <br />
       <YoutubeVideo videoId={videoId} />
-      <br />
       <h1>YoutubeVideoWithRoute</h1>
-      <br />
-      <YoutubeVideoWithRoute route={match} />
-    </>
+      <YoutubeVideoWithRoute route={route} />
+    </React.Fragment>
   );
 }
 ```
@@ -208,6 +219,8 @@ Dumb components are sometimes called presentational components (for a reason)
 
 Third time is the charm! - Contribute to the component library
 
+note: It's hard to antecipate all the use-cases in order to make components for the component library, which is why might be a good idea to derive your components from your actual use cases
+
 ---
 
 ## Lifting state
@@ -216,7 +229,7 @@ Third time is the charm! - Contribute to the component library
 
 ---
 
-!["If you don't think managing state is tricky, consider the fact that 80% of all problems in all complex systems are fixed by rebooting."](assets/state.jpg)
+> "If you don't think managing state is tricky, consider the fact that 80% of all problems in all complex systems are fixed by rebooting." - [@stuarthalloway](https://twitter.com/stuarthalloway/status/1134806008528809985)
 
 ---
 
@@ -224,7 +237,7 @@ Pure components are easier to test, faster\* and less succeptible to bugs
 
 ---
 
-It's usually a good idea to keep your state logic on your smart components (although not always possible)
+It's usually a good idea to keep your state logic on your smart components
 
 ---
 
