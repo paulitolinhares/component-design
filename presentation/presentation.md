@@ -107,7 +107,7 @@ it('executes onSubmit callback', () => {
 })
 ```
 
-note: Since we are not _injecting_ the function to be executed on submit, it's easier to put a mock and assert it.
+note: Since we are now _injecting_ the function to be executed on submit, it's easier to put a mock and assert it.
 
 ---
 
